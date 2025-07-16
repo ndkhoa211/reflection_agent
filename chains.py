@@ -1,5 +1,6 @@
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_openai import ChatOpenAI
+from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 
 # this prompt acts as our critic: review output and criticize it
 reflection_prompt = ChatPromptTemplate.from_messages(
@@ -28,8 +29,11 @@ generation_prompt = ChatPromptTemplate.from_messages(
     ]
 )
 
-
-llm = ChatOpenAI(model="gpt-4.1-mini")
+#stream_cb = StreamingStdOutCallbackHandler()      # prints tokens as they arrive
+llm = ChatOpenAI(model="gpt-4.1-mini",
+                 #streaming=True,
+                 #callbacks=[stream_cb],
+                 )
 
 generate_chain = generation_prompt | llm
 
