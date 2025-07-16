@@ -1,8 +1,6 @@
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_openai import ChatOpenAI
 
-
-
 # this prompt acts as our critic: review output and criticize it
 reflection_prompt = ChatPromptTemplate.from_messages(
     [
@@ -31,8 +29,8 @@ generation_prompt = ChatPromptTemplate.from_messages(
 )
 
 
-llm = ChatOpenAI(model="gpt-4.1-mini", temperature=2.0)
+llm = ChatOpenAI(model="gpt-4.1-mini")
 
 generate_chain = generation_prompt | llm
 
-reflection_prompt = reflection_prompt | llm
+reflection_chain = reflection_prompt | llm
