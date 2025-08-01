@@ -50,7 +50,7 @@ $ uv venv            # → .venv/
 $ source .venv/bin/activate   # Windows: .venv\Scripts\activate
 
 # 3. Install deps
-$ uv pip install -e .
+$ uv sync
 
 # 4. Add your OpenAI key
 $ echo "OPENAI_API_KEY=sk-..." > .env
